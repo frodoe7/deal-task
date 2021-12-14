@@ -62,7 +62,10 @@ describe('User Controller', () => {
 
     it('should get author info by its id', async () => {
         const createdUser = await controller.create(createAuthor)
-        const user = await controller.findById((createdUser as any)._id)
+        const user = await controller.findById(
+            (createdUser as any)._id.toString()
+        )
+
         expect((createdUser as any)._id.toString()).toBe(
             (user as any)._id.toString()
         )
@@ -71,7 +74,9 @@ describe('User Controller', () => {
 
     it('should not get author info if the user is not author', async () => {
         const createdUser = await controller.create(createUser)
-        const user = await controller.findById((createdUser as any)._id)
+        const user = await controller.findById(
+            (createdUser as any)._id.toString()
+        )
         expect(user).toBeNull()
     })
 })

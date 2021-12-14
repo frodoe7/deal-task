@@ -11,16 +11,17 @@ export class UserService {
     ) {}
 
     async create(newUser: CreateNewUser): Promise<User> {
-        const createdUser = this.userModel.create(newUser)
-        return createdUser
+        return this.userModel.create(newUser)
     }
 
     async findAll(): Promise<User[]> {
         return this.userModel.find({ isAuthor: true }).exec()
     }
 
-    async findById(_id: string): Promise<User> {
-        return this.userModel.findOne({ isAuthor: true, _id }).exec()
+    async findById(_id: string, onlyAuthors = true): Promise<User> {
+        return onlyAuthors
+            ? this.userModel.findOne({ isAuthor: true, _id }).exec()
+            : this.userModel.findOne({ _id }).exec()
     }
 
     // Only for testing purpose

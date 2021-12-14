@@ -1,4 +1,10 @@
-import { IsString, MinLength, MaxLength, IsBoolean } from 'class-validator'
+import {
+    IsString,
+    MinLength,
+    MaxLength,
+    IsBoolean,
+    IsOptional,
+} from 'class-validator'
 
 export class CreateNewUser {
     @IsString()
@@ -12,9 +18,11 @@ export class CreateNewUser {
     job: string
 
     @IsBoolean()
+    @IsOptional()
     isAuthor?
 
     @IsString()
+    @IsOptional()
     _id?
 }
 
