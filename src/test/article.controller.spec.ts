@@ -45,7 +45,7 @@ describe('Article Controller', () => {
             controllers: [ArticleController, UserController],
             providers: [ArticleService, UserService],
             imports: [
-                MongooseModule.forRoot('mongodb://localhost/blog-test'),
+                MongooseModule.forRoot(process.env.DB_TEST_CONNECTION_STRING),
                 MongooseModule.forFeature([
                     { name: User.name, schema: UserSchema },
                 ]),

@@ -9,7 +9,7 @@ import { ArticleService } from './services/article.service'
 
 @Module({
     imports: [
-        MongooseModule.forRoot('mongodb://localhost/blog', {}),
+        MongooseModule.forRoot(process.env.DB_CONNECTION_STRING),
         MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
         MongooseModule.forFeature([
             { name: Article.name, schema: ArticleSchema },
