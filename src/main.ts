@@ -20,7 +20,7 @@ async function bootstrap() {
     app.useGlobalInterceptors(new TransformationInterceptor())
     app.useGlobalPipes(new ValidationPipe())
 
-    await app.listen(3000)
+    await app.listen(process.env.PORT || 80)
 }
 
 bootstrap()
